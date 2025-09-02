@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+<main>
+  <p>
+    This page is rendered by FastAPI + Jinja2. In the next milestone, we’ll add
+    a React island.
+  </p>
+
+  <div
+    id="react-hello"
+    data-props='{"message":"This will be hydrated by React soon."}'
+  ></div>
+</main>
+{% endblock %}
