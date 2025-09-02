@@ -1,16 +1,16 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import Optional, Dict
+from app.__version__ import VERSION as APP_VERSION
 
 class Settings(BaseSettings):
     # App identity
     APP_NAME: str = "FastAPI Blog"
     APP_ENV: str = "development"  # development | staging | production
-    APP_VERSION: str = "0.2.0"    # bump as we go
 
-    # DB: users can set env; we won't expose this in /api/config
+    # DB (not exposed in public config)
     DATABASE_URL: Optional[str] = None
 
-    # Feature flags (example flags you can flip at runtime)
+    # Feature flags (runtime-togglable, safe to expose)
     ENABLE_DEMO_BANNER: bool = False
     ENABLE_EXPERIMENTAL_UI: bool = False
 
@@ -20,19 +20,18 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    def public_dict(self) -> Dict[str, str]:
+    def public_dict(self) -> Dict:
         """
-        Safe subset for clients. Do NOT include secrets or connection strings.
+        Return a safe subset for clients. Never include secrets or connection strings.
         """
         return {
             "name": self.APP_NAME,
             "env": self.APP_ENV,
-            "version": self.APP_VERSION,
+            "version": APP_VERSION,  # Hard-coded constant
             "features": {
                 "demoBanner": self.ENABLE_DEMO_BANNER,
                 "experimentalUI": self.ENABLE_EXPERIMENTAL_UI,
             },
-            # static base path for assets; adjust later if you add CDN
             "staticBase": "/static",
         }
 
