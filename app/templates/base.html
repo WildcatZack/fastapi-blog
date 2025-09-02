@@ -22,6 +22,13 @@
         opacity: 0.7;
         font-size: 0.9rem;
       }
+      button {
+        padding: 0.4rem 0.7rem;
+        border-radius: 0.5rem;
+        border: 1px solid #ddd;
+        background: #f9f9f9;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -39,6 +46,8 @@
         <p>API health: <code>/api/health</code></p>
       </footer>
     </div>
-    <!-- React bundle will be added later as /static/assets/main.js -->
+
+    <!-- React bundle (built by Vite into /static/assets/main.js) -->
+    <script type="module" src="/static/assets/main.js"></script>
   </body>
 </html>

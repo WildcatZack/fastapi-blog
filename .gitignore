@@ -9,3 +9,8 @@ venv/
 .env
 .vscode/
 .idea/
+
+# Node
+node_modules/
+webui/.vite/
+dist/

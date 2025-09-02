@@ -5,3 +5,8 @@
 .env
 Dockerfile
 docker-compose.yml
+
+# Ignore in docker build context
+node_modules
+webui/.vite
+dist
