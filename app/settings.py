@@ -15,7 +15,10 @@ class Settings(BaseSettings):
     ENABLE_EXPERIMENTAL_UI: bool = False
 
     # Security toggles (NOT exposed)
-    ENABLE_HSTS: bool = False  # enable only when behind HTTPS (Nginx Proxy Manager)
+    ENABLE_HSTS: bool = False  # enable only when behind HTTPS (NPM)
+
+    # Readiness probe tuning (milliseconds)
+    READINESS_DB_TIMEOUT_MS: int = 300
 
     model_config = SettingsConfigDict(
         env_file=".env",
