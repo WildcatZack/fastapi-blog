@@ -14,6 +14,9 @@ class Settings(BaseSettings):
     ENABLE_DEMO_BANNER: bool = False
     ENABLE_EXPERIMENTAL_UI: bool = False
 
+    # Security toggles (NOT exposed)
+    ENABLE_HSTS: bool = False  # enable only when behind HTTPS (Nginx Proxy Manager)
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
