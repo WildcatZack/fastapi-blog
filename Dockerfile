@@ -45,5 +45,10 @@ RUN chown -R appuser:appuser /app
 USER appuser
 
 EXPOSE 8000
+
+# --- Container-level healthcheck (respects PORT env, default 8000) ---
+HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=5 \
+  CMD ["sh","-lc","curl -fsS http://127.0.0.1:${PORT:-8000}/api/health >/dev/null || exit 1"]
+
 ENTRYPOINT ["/usr/bin/tini","--"]
 CMD ["sh","-lc","uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

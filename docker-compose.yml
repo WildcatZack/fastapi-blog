@@ -19,8 +19,8 @@ services:
       # Host port is independently configurable from container PORT for convenience.
       # Example: HOST_PORT=18000 and PORT=8081 -> host:18000 -> container:8081
       - "${HOST_PORT:-8000}:${PORT:-8000}"
-    healthcheck:
-      test: ["CMD", "curl", "-fsS", "http://localhost:${PORT:-8000}/api/health"]
-      interval: 10s
-      timeout: 3s
-      retries: 5
+    # healthcheck:
+    #   test: ["CMD", "curl", "-fsS", "http://localhost:${PORT:-8000}/api/health"]
+    #   interval: 10s
+    #   timeout: 3s
+    #   retries: 5
