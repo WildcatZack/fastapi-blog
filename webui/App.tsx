@@ -17,7 +17,7 @@ export default function App({ message = "Hello from React Island!" }: Props) {
         background: "white",
       }}
     >
-      <strong>React Island:</strong> {message}
+      <strong>React Island!:</strong> {message}
       <div style={{ marginTop: 8 }}>
         <button onClick={() => setCount((c) => c + 1)}>Clicks: {count}</button>
       </div>
